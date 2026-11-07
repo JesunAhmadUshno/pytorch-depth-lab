@@ -32,7 +32,16 @@ def _train(rank: int, world: int, epochs: int, out: dict) -> None:
     os.environ.setdefault("OMP_NUM_THREADS", "2")
     seed_all(42)
     if world > 1:
-        dist.init_process_group("gloo", rank=rank, world_size=world)
+        from datetime import timedelta
+
+        # FileStore rendezvous: the TCP store reset a peer
+        # connection on this VM (DECISIONS.md D8). The store file
+        # is unique per launch and removed by the caller.
+        store_path = os.environ.get("B4_DDP_STORE", "/tmp/b4_ddp_store")
+        dist.init_process_group(
+            "gloo", init_method=f"file://{store_path}", rank=rank,
+            world_size=world, timeout=timedelta(minutes=10),
+        )
     device = torch.device("cpu")
     train_ds, val_ds, _ = make_datasets()
     per_rank_batch = RECIPE["batch_size"] // world
@@ -114,6 +123,10 @@ def main() -> None:
     else:
         os.environ.setdefault("MASTER_ADDR", "127.0.0.1")
         os.environ.setdefault("MASTER_PORT", "29517")
+        # On this VM the default gloo interface (the host's primary
+        # NIC) stalls peer traffic between local ranks; pin gloo to
+        # loopback (DECISIONS.md D8).
+        os.environ.setdefault("GLOO_SOCKET_IFNAME", "lo")
         import torch.multiprocessing as mp
 
         # spawn passes args positionally; wrap to collect rank-0 output

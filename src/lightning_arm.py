@@ -141,6 +141,9 @@ def run_lightning(seed: int, epochs: int, device: str) -> dict:
     t0 = time.perf_counter()
     trainer.fit(lit, train_dataloaders=train_loader)
     wall = time.perf_counter() - t0
+    # Lightning restores the module to its pre-fit device (CPU)
+    # when fit returns; move it back before the final evaluation.
+    lit.model.to(dev)
     # Same throughput definition as the hand loop: epochs 2..N.
     img_total, time_total = 0, 0.0
     for i, row in enumerate(probe.rows):

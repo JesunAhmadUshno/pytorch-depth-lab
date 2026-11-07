@@ -72,8 +72,17 @@ def run_profile(device: torch.device, workers: int, pin: bool,
                 torch.cuda.synchronize()
             prof.step()
     prof.export_chrome_trace(str(PROFILES / f"trace_{tag}.json"))
-    key = "self_cuda_time_total" if device.type == "cuda" else "self_cpu_time_total"
-    avgs = prof.key_averages()
+    avgs = list(prof.key_averages())
+    # torch 2.11 renamed the CUDA self-time attribute, and on
+    # stacks where CUPTI fails to initialise (seen on BlackBox:
+    # CUPTI_ERROR_INVALID_DEVICE) only CPU time exists. Pick the
+    # strongest metric actually present and say which was used.
+    key = "self_cpu_time_total"
+    if avgs:
+        for cand in ("self_device_time_total", "self_cuda_time_total"):
+            if hasattr(avgs[0], cand) and sum(getattr(a, cand) for a in avgs) > 0:
+                key = cand
+                break
     total = sum(getattr(a, key) for a in avgs) or 1
     table = [
         {"op": a.key, "self_time_us": getattr(a, key),
@@ -85,6 +94,7 @@ def run_profile(device: torch.device, workers: int, pin: bool,
         "config": {"workers": workers, "pin": pin, "channels_last": channels_last,
                    "steps_profiled": steps, "batch": 128},
         "metric": key,
+        "cuda_activity_captured": key != "self_cpu_time_total",
         "top_ops": table,
     }
 

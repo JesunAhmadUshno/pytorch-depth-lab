@@ -11,3 +11,4 @@ results/profiles/
 wandb/
 suite_cpu.log
 *.log
+*.out

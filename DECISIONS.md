@@ -28,6 +28,30 @@ anything decided after the freeze, with reasons.
 - D6 (2026-11-07): The workshop paper listed in the pack's
   deliverables is deferred to ROADMAP.md. The study, code,
   results, and audit are this build's deliverables.
+- D8 (2026-11-07): CPU DDP rendezvous history, three attempts.
+  Attempt 1 (env:// store) stalled: TCPStore listening, peer rank
+  never joined over the VM's primary interface. Attempt 2
+  (tcp://127.0.0.1 store, GLOO_SOCKET_IFNAME=lo) failed at the
+  store: "Connection reset by peer" for rank 1. Attempt 3 uses a
+  FileStore rendezvous (init_method file://, unique path per
+  launch) with GLOO_SOCKET_IFNAME=lo for peer traffic. Transport
+  plumbing only; nothing about the correctness question H7 asks.
+- D10 (2026-11-07): Profiler metric fallback. On BlackBox,
+  Kineto reports CUPTI_ERROR_INVALID_DEVICE and CUDA activity
+  time is unavailable; torch 2.11 also renamed the attribute
+  (self_device_time_total). src/profile.py now selects the
+  strongest self-time metric present and records
+  cuda_activity_captured in the payload. The profiler evidence
+  for H4 is then the CPU-side operator table beside the A7
+  step-time decomposition; the limitation is stated in
+  RESULTS.md, not hidden.
+- D9 (2026-11-07): Lightning arm fix and re-run. A3 as first
+  written failed after fit: Lightning restores the module to its
+  pre-fit device (CPU) when fit returns, so the final shared
+  evaluate() fed CUDA batches to a CPU model. Fix: move the model
+  back to the run device before the final evaluation. Both A3
+  seeds were re-run with the fix under the identical frozen
+  protocol; the failed attempts are in the suite log.
 - D7 (2026-11-07): BlackBox work directory is
   C:\Users\Jesun\b4-pytorch-depth. GPU code runs there from a
   synced copy of src/ plus its own data directory, so the laptop

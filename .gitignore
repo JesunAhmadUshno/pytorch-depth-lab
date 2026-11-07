@@ -9,3 +9,5 @@ data/*.zip
 lightning_logs/
 results/profiles/
 wandb/
+suite_cpu.log
+*.log

@@ -208,4 +208,11 @@ and producing command.
 
 ## Amendments
 
-(none at freeze time)
+- A1 (2026-11-07, before any results): the parameter count in
+  the Frozen recipe section reads 11,689,512. That is ResNet-18
+  with the 1000-class ImageNet head, the pack's figure. This
+  study's model carries the 10-class EuroSAT head and has
+  11,181,642 parameters, verified against torchvision at build
+  time (both counts reproduced in the build log). The recipe is
+  otherwise unchanged; the correction is recorded here rather
+  than edited silently, per this file's own rule.

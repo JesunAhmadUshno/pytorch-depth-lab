@@ -32,9 +32,10 @@ statement is an intention, never a measured claim of this study.
 - Dataset: EuroSAT RGB (Helber et al.), 27,000 images, 64x64, 10
   classes. Stratified split 21,600 train / 2,700 validation / 2,700
   test. Licence and version: see LICENSES.md and data/README.md.
-- Model: torchvision ResNet-18 (11,689,512 parameters with the
-  10-class head), trained from scratch and fine-tuned from
-  ImageNet weights (IMAGENET1K_V1).
+- Model: torchvision ResNet-18 (11,181,642 parameters with the
+  10-class head; the pack's 11,689,512 is the 1000-class ImageNet
+  head count, see PREREG Amendment A1), trained from scratch and
+  fine-tuned from ImageNet weights (IMAGENET1K_V1).
 
 ## Design
 

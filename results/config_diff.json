@@ -1,0 +1,101 @@
+{
+  "n_differ": 1,
+  "rows": [
+    {
+      "equal": true,
+      "hand_loop": "RandomHorizontalFlip(0.5), RandomVerticalFlip(0.5), train only",
+      "lightning": "RandomHorizontalFlip(0.5), RandomVerticalFlip(0.5), train only",
+      "setting": "augmentation"
+    },
+    {
+      "equal": true,
+      "hand_loop": 128,
+      "lightning": 128,
+      "setting": "batch_size"
+    },
+    {
+      "equal": true,
+      "hand_loop": [
+        0.9,
+        0.999
+      ],
+      "lightning": [
+        0.9,
+        0.999
+      ],
+      "setting": "betas"
+    },
+    {
+      "equal": true,
+      "hand_loop": false,
+      "lightning": false,
+      "setting": "cudnn_benchmark"
+    },
+    {
+      "equal": true,
+      "hand_loop": "DataLoader passed explicitly, generator seeded",
+      "lightning": "DataLoader passed explicitly, generator seeded",
+      "setting": "data_order"
+    },
+    {
+      "equal": true,
+      "hand_loop": 0.0,
+      "lightning": 0.0,
+      "setting": "label_smoothing"
+    },
+    {
+      "equal": false,
+      "hand_loop": null,
+      "lightning": "logger off, checkpointing off, progress bar off, sanity steps 0, validation loop unused (shared evaluate via callback)",
+      "setting": "lightning_trainer"
+    },
+    {
+      "equal": true,
+      "hand_loop": "CrossEntropyLoss",
+      "lightning": "CrossEntropyLoss",
+      "setting": "loss"
+    },
+    {
+      "equal": true,
+      "hand_loop": 0.001,
+      "lightning": 0.001,
+      "setting": "lr"
+    },
+    {
+      "equal": true,
+      "hand_loop": "ImageNet mean/std",
+      "lightning": "ImageNet mean/std",
+      "setting": "normalisation"
+    },
+    {
+      "equal": true,
+      "hand_loop": "AdamW",
+      "lightning": "AdamW",
+      "setting": "optimizer"
+    },
+    {
+      "equal": true,
+      "hand_loop": "float32 (unless the arm varies it)",
+      "lightning": "float32 (unless the arm varies it)",
+      "setting": "precision"
+    },
+    {
+      "equal": true,
+      "hand_loop": "RandomSampler with per-epoch generator seeded by run seed + epoch",
+      "lightning": "RandomSampler with per-epoch generator seeded by run seed + epoch",
+      "setting": "sampler"
+    },
+    {
+      "equal": true,
+      "hand_loop": "CosineAnnealingLR(T_max=epochs)",
+      "lightning": "CosineAnnealingLR(T_max=epochs)",
+      "setting": "scheduler"
+    },
+    {
+      "equal": true,
+      "hand_loop": 0.0001,
+      "lightning": 0.0001,
+      "setting": "weight_decay"
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "arm": "A3",
+  "batch_size": 128,
+  "channels_last": false,
+  "checkpointing": false,
+  "command": "python -m src.lightning_arm --seed 42 --epochs 15 --device cuda",
+  "compile_step_s": null,
+  "compiled": false,
+  "env": {
+    "cpu_count": 20,
+    "cuda_version": "12.8",
+    "device": "cuda",
+    "gpu_name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.7",
+    "timestamp_utc": "2026-11-07T13:17:36Z",
+    "torch": "2.11.0+cu128",
+    "torchvision": "0.26.0+cu128"
+  },
+  "epoch_rows": [
+    {
+      "epoch": 1,
+      "throughput_img_s": 1521.5656143758056,
+      "train_wall_s": 14.195904399995925,
+      "val_acc": 0.6725925925925926,
+      "val_nll": 0.9593238519739221
+    },
+    {
+      "epoch": 2,
+      "throughput_img_s": 2346.177769560342,
+      "train_wall_s": 9.206463500013342,
+      "val_acc": 0.6444444444444445,
+      "val_nll": 1.0008151633651168
+    },
+    {
+      "epoch": 3,
+      "throughput_img_s": 2337.552113481212,
+      "train_wall_s": 9.240435699990485,
+      "val_acc": 0.7322222222222222,
+      "val_nll": 0.7239578343762292
+    },
+    {
+      "epoch": 4,
+      "throughput_img_s": 2378.9700632444246,
+      "train_wall_s": 9.079559399979189,
+      "val_acc": 0.7744444444444445,
+      "val_nll": 0.6121122938615304
+    },
+    {
+      "epoch": 5,
+      "throughput_img_s": 2507.8017887797846,
+      "train_wall_s": 8.613120900001377,
+      "val_acc": 0.7933333333333333,
+      "val_nll": 0.575358479641102
+    },
+    {
+      "epoch": 6,
+      "throughput_img_s": 2390.99694011903,
+      "train_wall_s": 9.03388860000996,
+      "val_acc": 0.8296296296296296,
+      "val_nll": 0.46931819595672464
+    },
+    {
+      "epoch": 7,
+      "throughput_img_s": 2384.2078548828545,
+      "train_wall_s": 9.05961280001793,
+      "val_acc": 0.8581481481481481,
+      "val_nll": 0.4093189498009505
+    },
+    {
+      "epoch": 8,
+      "throughput_img_s": 2378.9155394142695,
+      "train_wall_s": 9.079767499992158,
+      "val_acc": 0.8388888888888889,
+      "val_nll": 0.4836557853663409
+    },
+    {
+      "epoch": 9,
+      "throughput_img_s": 2401.1496170729,
+      "train_wall_s": 8.995691000018269,
+      "val_acc": 0.8674074074074074,
+      "val_nll": 0.3789035748331635
+    },
+    {
+      "epoch": 10,
+      "throughput_img_s": 2417.7838208421977,
+      "train_wall_s": 8.93380120000802,
+      "val_acc": 0.86,
+      "val_nll": 0.37054934272059686
+    },
+    {
+      "epoch": 11,
+      "throughput_img_s": 2401.366991504097,
+      "train_wall_s": 8.994876699987799,
+      "val_acc": 0.8855555555555555,
+      "val_nll": 0.3236560247341792
+    },
+    {
+      "epoch": 12,
+      "throughput_img_s": 2383.494117847963,
+      "train_wall_s": 9.06232570001157,
+      "val_acc": 0.9077777777777778,
+      "val_nll": 0.2688906755712297
+    },
+    {
+      "epoch": 13,
+      "throughput_img_s": 2362.147866500716,
+      "train_wall_s": 9.14422009998816,
+      "val_acc": 0.9125925925925926,
+      "val_nll": 0.24966568299465708
+    },
+    {
+      "epoch": 14,
+      "throughput_img_s": 2393.7303945419426,
+      "train_wall_s": 9.023572600010084,
+      "val_acc": 0.9162962962962963,
+      "val_nll": 0.2439468749253838
+    },
+    {
+      "epoch": 15,
+      "throughput_img_s": 2398.197701129663,
+      "train_wall_s": 9.006763700017473,
+      "val_acc": 0.9181481481481482,
+      "val_nll": 0.23797997828435014
+    }
+  ],
+  "epochs": 15,
+  "first_step_s": null,
+  "framework": "lightning 2.6.6",
+  "gpu_end": {
+    "driver": "577.05",
+    "mem_clock_mhz": "9001",
+    "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "power_w": "13.41",
+    "sm_clock_mhz": "180",
+    "temp_c": "55"
+  },
+  "gpu_start": {
+    "driver": "577.05",
+    "mem_clock_mhz": "405",
+    "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "power_w": "5.59",
+    "sm_clock_mhz": "22",
+    "temp_c": "44"
+  },
+  "init": "scratch",
+  "peak_mem_mib": 441.08349609375,
+  "precision": "fp32",
+  "run_id": "a3_lightning_s42",
+  "seed": 42,
+  "test_acc": 0.9262962962962963,
+  "test_nll": 0.23099350118181772,
+  "throughput_img_s": 2391.0033867368297,
+  "tta_s": null,
+  "wall_s": 159.934372800024,
+  "workers": 0
+}

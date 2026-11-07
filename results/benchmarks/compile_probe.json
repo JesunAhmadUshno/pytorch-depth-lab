@@ -1,0 +1,23 @@
+{
+  "default": {
+    "first_step_s": 2.4605209000001196,
+    "mode_kwargs": "{}",
+    "status": "ok"
+  },
+  "env": {
+    "cpu_count": 20,
+    "cuda_version": "12.8",
+    "device": "cuda",
+    "gpu_name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.7",
+    "timestamp_utc": "2026-11-07T13:09:49Z",
+    "torch": "2.11.0+cu128",
+    "torchvision": "0.26.0+cu128"
+  },
+  "fullgraph": {
+    "first_step_s": 0.02511790001881309,
+    "mode_kwargs": "{'fullgraph': True}",
+    "status": "ok"
+  }
+}

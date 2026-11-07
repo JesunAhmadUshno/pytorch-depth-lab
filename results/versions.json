@@ -1,0 +1,41 @@
+{
+  "blackbox_gpu_machine": {
+    "env": {
+      "cpu_count": 20,
+      "cuda_version": "12.8",
+      "device": "cuda",
+      "gpu_name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "python": "3.14.7",
+      "timestamp_utc": "2026-11-07T13:09:59Z",
+      "torch": "2.11.0+cu128",
+      "torchvision": "0.26.0+cu128"
+    },
+    "gpu_snapshot": {
+      "driver": "577.05",
+      "mem_clock_mhz": "11001",
+      "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+      "power_w": "11.91",
+      "sm_clock_mhz": "1500",
+      "temp_c": "52"
+    },
+    "lightning": "2.6.6",
+    "machine": "gpu",
+    "torchvision": "0.26.0+cu128"
+  },
+  "vm_cpu_machine": {
+    "env": {
+      "cpu_count": 4,
+      "device": "cpu",
+      "platform": "Linux-7.0.0-43-generic-x86_64-with-glibc2.39",
+      "python": "3.12.3",
+      "timestamp_utc": "2026-11-07T12:56:15Z",
+      "torch": "2.15.0+cpu",
+      "torchvision": "0.29.2+cpu"
+    },
+    "gpu_snapshot": null,
+    "lightning": "2.6.6",
+    "machine": "cpu",
+    "torchvision": "0.29.2+cpu"
+  }
+}

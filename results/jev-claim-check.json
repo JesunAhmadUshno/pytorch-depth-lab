@@ -1,0 +1,12 @@
+{
+ "date": "2026-11-07",
+ "gate": "claim_check",
+ "input_tokens": 835,
+ "model": "jev-1.13.0",
+ "noul": 0.19,
+ "output_tokens": 20,
+ "question_id": "supported",
+ "route": "REVIEW",
+ "route_bands": "standing claim_check bands: clear at 0.85 or above, block at 0.10 or below, review between",
+ "verification_note": "REVIEW route, so the claim was checked by hand against the generated files before use. Data-wait shares 0.5369 and 0.0102 and step times 81.3 ms and 29.5 ms were read back from results/benchmarks/a7_loader.json; the AMP ratio 1.127 with CI [1.121, 1.134] and the compile ratio 1.027 with CI [1.016, 1.039] were read back from results/summary.json; the 1.30 and 1.10 priors were confirmed in PREREG.md at the pre-registration commit 565dfc0. The claim stands on that verification. No key and no full state text are stored in this file."
+}

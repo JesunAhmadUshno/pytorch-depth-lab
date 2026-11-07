@@ -1,0 +1,92 @@
+{
+  "claim": "shape and initialisation only",
+  "env": {
+    "cpu_count": 20,
+    "cuda_version": "12.8",
+    "device": "cuda",
+    "gpu_name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.7",
+    "timestamp_utc": "2026-11-07T13:09:56Z",
+    "torch": "2.11.0+cu128",
+    "torchvision": "0.26.0+cu128"
+  },
+  "n_dtensor": 62,
+  "n_params": 62,
+  "shapes_sample": {
+    "bn1.bias": {
+      "dtensor": true,
+      "global": [
+        64
+      ],
+      "local": [
+        64
+      ]
+    },
+    "bn1.weight": {
+      "dtensor": true,
+      "global": [
+        64
+      ],
+      "local": [
+        64
+      ]
+    },
+    "conv1.weight": {
+      "dtensor": true,
+      "global": [
+        64,
+        3,
+        7,
+        7
+      ],
+      "local": [
+        64,
+        3,
+        7,
+        7
+      ]
+    },
+    "layer1.0.bn1.bias": {
+      "dtensor": true,
+      "global": [
+        64
+      ],
+      "local": [
+        64
+      ]
+    },
+    "layer1.0.bn1.weight": {
+      "dtensor": true,
+      "global": [
+        64
+      ],
+      "local": [
+        64
+      ]
+    },
+    "layer1.0.conv1.weight": {
+      "dtensor": true,
+      "global": [
+        64,
+        64,
+        3,
+        3
+      ],
+      "local": [
+        64,
+        64,
+        3,
+        3
+      ]
+    }
+  },
+  "status": "ok",
+  "step": {
+    "loss": 1.6667646169662476,
+    "output_shape": [
+      32,
+      10
+    ]
+  }
+}

@@ -7,11 +7,38 @@ ResNet-18, with AMP, torch.compile, gradient checkpointing,
 profiling, and data loading each measured rather than assumed, and
 a CPU DDP (gloo) arm that states what it can honestly prove.
 
-Status: PRE-REGISTERED. The protocol was frozen in PREREG.md
-before any training run. No results yet.
-Pre-registration commit: recorded in the results-stage commit
-(PREREG.md itself is the frozen file; its first commit precedes
-every results file in this repo's history).
+Status: COMPLETE. The protocol was frozen in PREREG.md before
+any training run, and the study was executed as registered.
+Pre-registration commit:
+565dfc0cd8c9bebee94166d53fb9d3756ab62150 (its first commit
+precedes every results file in this repo's history; one
+pre-results amendment, A1, corrects a parameter count).
+
+Headline outcome: on this machine the workload is bound by data
+loading, not GPU compute, and most imported priors failed
+because of it. Of seven frozen hypotheses, one is supported
+(H4, profiling). AMP reached 1.13x against a 1.30 prior,
+torch.compile 1.03x against 1.10, gradient checkpointing saved
+14.8% memory against a 30% criterion, the hand loop was slower
+than Lightning (0.69x) yet more accurate (+3.4 pp), and CPU DDP
+tracked the loss trajectory but failed the endpoint accuracy
+window. Full numbers, intervals, and the failures as measured:
+RESULTS.md. Grade and deductions: AUDIT.md.
+
+## Results (GPU arms, RTX 5050 Laptop GPU, 8 GB)
+
+| Arm | n (seeds) | Throughput img/s (mean) | Test acc | Test NLL | Peak mem MiB | TTA s |
+|---|---|---|---|---|---|---|
+| A1 Hand FP32 scratch | 2 | 1655.1 | 0.9580 | 0.1267 | 440 | not reached, not reached |
+| A2 Hand FP32 fine-tuned | 2 | 1694.6 | 0.9817 | 0.0734 | 440 | 95, 122 |
+| A3 Lightning FP32 scratch | 2 | 2408.4 | 0.9237 | 0.2334 | 441 | not reached, not reached |
+| A4 Hand AMP FP16 scratch | 2 | 1865.9 | 0.9583 | 0.1229 | 317 | not reached, not reached |
+| A5 Hand FP32 + torch.compile | 2 | 1699.1 | 0.9591 | 0.1297 | 454 | not reached, not reached |
+| A6 Hand FP32 + grad ckpt | 2 | 1598.8 | 0.9580 | 0.1270 | 376 | not reached, not reached |
+
+Verdicts (frozen rules, PREREG.md): H1 NOT SUPPORTED,
+H2 NOT SUPPORTED, H3 NOT SUPPORTED, H4 SUPPORTED,
+H5 NOT SUPPORTED, H6 NOT SUPPORTED, H7 NOT SUPPORTED.
 
 ## Why this exists
 

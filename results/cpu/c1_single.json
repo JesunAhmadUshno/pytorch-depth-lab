@@ -1,0 +1,42 @@
+{
+  "arm": "C1",
+  "command": "python -m src.ddp_cpu --world 1",
+  "effective_batch": 128,
+  "env": {
+    "cpu_count": 4,
+    "device": "cpu",
+    "platform": "Linux-7.0.0-43-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "timestamp_utc": "2026-11-07T11:58:50Z",
+    "torch": "2.15.0+cpu",
+    "torchvision": "0.29.2+cpu"
+  },
+  "epoch_rows": [
+    {
+      "epoch": 1,
+      "epoch_wall_s": 263.5551016290001,
+      "train_loss": 0.8898390661345588,
+      "val_acc": 0.5848148148148148,
+      "val_nll": 1.2692505105336507
+    },
+    {
+      "epoch": 2,
+      "epoch_wall_s": 264.9853169810003,
+      "train_loss": 0.5852221053617972,
+      "val_acc": 0.794074074074074,
+      "val_nll": 0.6063188279116595
+    },
+    {
+      "epoch": 3,
+      "epoch_wall_s": 291.18030747600005,
+      "train_loss": 0.43674598570223205,
+      "val_acc": 0.76,
+      "val_nll": 0.8411743929782124
+    }
+  ],
+  "epochs": 3,
+  "per_rank_batch": 128,
+  "seed": 42,
+  "wall_s": 858.2592275429997,
+  "world_size": 1
+}

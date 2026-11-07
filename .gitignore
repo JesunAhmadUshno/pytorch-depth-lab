@@ -12,3 +12,4 @@ wandb/
 suite_cpu.log
 *.log
 *.out
+results/runs/smoke_*

@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/EuroSAT_RGB/
+data/EuroSAT_RGB.zip
+data/*.zip
+*.ckpt
+lightning_logs/
+results/profiles/
+wandb/

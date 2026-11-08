@@ -57,3 +57,17 @@ anything decided after the freeze, with reasons.
   synced copy of src/ plus its own data directory, so the laptop
   is never a second source of truth: results JSON files are
   copied back into this repo's results/ tree.
+- D11 (2026-11-08): Lock enforcement under the portfolio standard
+  v2. The lock is tag proposal-v1 on 565dfc0, the commit that
+  froze PREREG.md and SPEC.md before any code or result. PREREG.md
+  allows dated amendments appended under its Amendments heading,
+  so tests/test_layout.py does not pin the whole current file to
+  the lock: it rebuilds the file as committed at 565dfc0 from
+  everything above the Amendments heading plus the original
+  "(none at freeze time)" line and checks that SHA-256, so any
+  edit to the frozen text fails. A second pin covers the file as
+  amended (A1), so a new amendment also needs its pin updated in
+  the same pull request. File names fixed by the lock commit
+  (PREREG.md, SPEC.md, RESULTS.md, AUDIT.md, METHODS.md,
+  DECISIONS.md, ROADMAP.md) are kept and mapped in the README
+  layout table instead of renamed.

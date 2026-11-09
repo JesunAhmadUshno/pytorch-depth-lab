@@ -1,29 +1,64 @@
 # PyTorch Depth Lab
 
-A pre-registered measurement study of PyTorch training at the
-framework level: a hand-written training loop against a PyTorch
-Lightning baseline on EuroSAT land-use classification with
-ResNet-18, with AMP, torch.compile, gradient checkpointing,
-profiling, and data loading each measured rather than assumed, and
-a CPU DDP (gloo) arm that states what it can honestly prove.
+**Question.** On one consumer GPU, how much faster, lighter on memory,
+and how different in accuracy is a hand-written PyTorch training loop
+against a PyTorch Lightning baseline, and what do AMP, torch.compile,
+gradient checkpointing, profiling and data loading each actually buy
+when measured rather than assumed?
 
-Status: COMPLETE. The protocol was frozen in PREREG.md before
-any training run, and the study was executed as registered.
-Pre-registration commit:
-565dfc0cd8c9bebee94166d53fb9d3756ab62150 (its first commit
-precedes every results file in this repo's history; one
-pre-results amendment, A1, corrects a parameter count).
+**Headline.** One of seven pre-registered hypotheses held: ResNet-18
+training on EuroSAT was bound by data loading, not GPU compute, so AMP
+reached 1.13x throughput (95% CI 1.12 to 1.13) against its 1.30x prior
+and torch.compile 1.03x (95% CI 1.02 to 1.04) against 1.10x, on one RTX
+5050 Laptop GPU with n = 2 seeds per arm.
 
-Headline outcome: on this machine the workload is bound by data
-loading, not GPU compute, and most imported priors failed
-because of it. Of seven frozen hypotheses, one is supported
-(H4, profiling). AMP reached 1.13x against a 1.30 prior,
-torch.compile 1.03x against 1.10, gradient checkpointing saved
-14.8% memory against a 30% criterion, the hand loop was slower
-than Lightning (0.69x) yet more accurate (+3.4 pp), and CPU DDP
-tracked the loss trajectory but failed the endpoint accuracy
-window. Full numbers, intervals, and the failures as measured:
-RESULTS.md. Grade and deductions: AUDIT.md.
+**Field.** ML and AI research. **Job family.** ML engineering (training
+performance).
+
+**Verdict.** Evaluated. PREREG.md was committed before any code or
+result (565dfc0, tag proposal-v1); all twelve GPU runs, the benchmarks
+and both CPU arms ran and their raw JSON is in results/; RESULTS.md
+scores all seven hypotheses under the frozen rules, six of them NOT
+SUPPORTED; tests pass in CI on Python 3.11 and 3.12, and CI regenerates
+results/summary.json from the raw runs unchanged. Not v1.0 Released: no
+second reader has re-derived the numbers yet.
+
+## Reproduce
+
+Checks, anywhere (CPU only, no dataset, no GPU):
+
+```text
+pip install -r requirements.txt
+python -m pytest -q
+python -m src.analyze && git diff --exit-code results/summary.json results/readme_table.md
+```
+
+`src.analyze` recounts every verdict and number in RESULTS.md from the
+raw run files in results/runs/, results/benchmarks/ and results/cpu/.
+
+The full study (needs the dataset and the named machines; see
+data/README.md and METHODS.md):
+
+```text
+python -m src.data --verify
+python -m src.run_suite --machine gpu   (BlackBox, RTX 5050 Laptop GPU)
+python -m src.run_suite --machine cpu   (4-core VM)
+python -m src.analyze
+```
+
+Every run JSON carries its own producing command, seed, and
+environment block.
+
+## Lifecycle
+
+- Question: DONE 2026-11-07
+- Proposal: DONE 2026-11-07
+- Baseline: DONE 2026-11-07
+- Build: DONE 2026-11-07
+- Evaluate: DONE 2026-11-07
+- Report: DONE 2026-11-07
+- Review: OPEN
+- Release: OPEN
 
 ## Results (GPU arms, RTX 5050 Laptop GPU, 8 GB)
 
@@ -39,6 +74,42 @@ RESULTS.md. Grade and deductions: AUDIT.md.
 Verdicts (frozen rules, PREREG.md): H1 NOT SUPPORTED,
 H2 NOT SUPPORTED, H3 NOT SUPPORTED, H4 SUPPORTED,
 H5 NOT SUPPORTED, H6 NOT SUPPORTED, H7 NOT SUPPORTED.
+
+In plain terms: gradient checkpointing saved 14.8% memory against a
+30% criterion, the hand loop was slower than Lightning (0.69x) yet
+more accurate (+3.4 pp), and CPU DDP tracked the loss trajectory but
+failed the endpoint accuracy window. Full numbers, intervals, and the
+failures as measured: RESULTS.md. Limitations and threats to
+validity: AUDIT.md.
+
+## Layout
+
+Files named in the locked pre-registration commit (PREREG.md and the
+deliverables list in SPEC.md) keep their names; the second column gives
+the role each plays in the portfolio standard.
+
+| Path | Role | What it holds |
+| --- | --- | --- |
+| PREREG.md | proposal | Frozen protocol, hypotheses and verdict rules (tag proposal-v1); amendments append-only; a test fails if the frozen text changes |
+| SPEC.md | proposal | Research question, design and positioning, frozen with PREREG.md |
+| RESULTS.md | report | Provenance, main table, every hypothesis scored, misses, what the study found |
+| AUDIT.md | report | Self-audit: what was verified, limitations and threats to validity |
+| METHODS.md | report | How the frozen protocol is implemented |
+| DECISIONS.md | decisions | Builder decisions D1 to D11, dated, with reasons |
+| ROADMAP.md | future work | Deferred and follow-up items, named so nothing is dropped |
+| results/runs/, results/benchmarks/, results/cpu/ | evidence | Raw per-run JSON and test-correctness arrays, as produced on the machines |
+| results/dataset.json, split.json, run_order.json, config_diff.json, versions*.json | evidence | Dataset hash, frozen split, realised arm order, Lightning config audit, pinned versions |
+| results/summary.json, results/readme_table.md | results | Scored results, regenerated from the evidence by src/analyze.py |
+| src/ | code | Hand loop, Lightning arm, benchmarks, profiler, DDP, FSDP2 check, analysis |
+| tests/ | tests | Split, model, gradcheck, analysis statistics, layout and lock |
+| data/README.md | data | How to fetch EuroSAT; no dataset file is committed |
+| LICENSES.md | licences | Dataset, weights and library licences |
+| CHANGELOG.md, CITATION.cff, SECURITY.md, LICENSE | project | Change history, citation, security policy, Apache-2.0 |
+
+Not present, on purpose: experiments/ (the locked protocol names
+results/ as the evidence location, so raw evidence stays there), site/
+(no dashboard), docs/decisions/ (DECISIONS.md is the locked decisions
+file).
 
 ## Why this exists
 
@@ -62,10 +133,6 @@ failures reported under stop rules instead of hidden.
 - P19 (distributed-training-lab) studies distributed training;
   this lab's CPU DDP arm is a correctness check with no scaling
   claim.
-
-Full design: SPEC.md. Frozen protocol and verdict rules:
-PREREG.md. Decisions taken by the builder: DECISIONS.md. Methods:
-METHODS.md. Results: RESULTS.md. Audit and grade: AUDIT.md.
 
 ## Machines
 

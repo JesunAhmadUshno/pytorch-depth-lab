@@ -2,7 +2,10 @@
 
 Self-audit against the Gap-Closure Programme charter, written
 after the results were generated and recounted by src/analyze.py
-from the raw artefacts. Grade: 7,200 of 10,000.
+from the raw artefacts. In the portfolio standard this file is part
+of the report: what was verified, then the limitations and threats to
+validity. It keeps its name because the locked SPEC.md lists it as a
+deliverable.
 
 ## What was verified
 
@@ -37,50 +40,52 @@ from the raw artefacts. Grade: 7,200 of 10,000.
   pre-registration commit; every figure matched. Record:
   results/jev-claim-check.json.
 
-## Deductions (total 2,800)
+## Limitations and threats to validity
 
-- 500: the A3 accuracy gap (+3.43 pp for the hand loop) is
+- The A3 accuracy gap (+3.43 pp for the hand loop) is
   unexplained. The config-diff audit proves every setting we
   control is equal, but the study carries no per-step loss
   instrumentation to isolate the framework-internal cause.
-- 400: two seeds per GPU arm. The pack allowed two to three;
+- Two seeds per GPU arm. The pack allowed two to three;
   the minimum was run. Accuracy intervals are paired bootstraps
-  over test examples, not over seeds.
-- 350: one dataset, one model, one GPU. External validity is
+  over test examples, not over seeds, and throughput intervals
+  are bootstraps over per-epoch throughputs pooled across the two
+  seeds, so neither interval carries seed-to-seed variance.
+- One dataset, one model, one GPU. External validity is
   narrow by design and stays narrow in every claim.
-- 300: the CPU DDP sub-protocol is thin (3 epochs, world size 2,
+- The CPU DDP sub-protocol is thin (3 epochs, world size 2,
   one seed). Its H7 endpoint failure is partly an artifact of
   endpoint noise at 3 epochs, which the write-up states but the
   design cannot rule out.
-- 250: no in-run GPU clock or thermal series. Boundary
+- No in-run GPU clock or thermal series. Boundary
   nvidia-smi snapshots catch idle clocks, so boost behaviour
   during training is unverified.
-- 250: profiler evidence is CPU self-time only (CUPTI failed on
+- Profiler evidence is CPU self-time only (CUPTI failed on
   this stack). The H4 verdict rests on the step decomposition,
   with the operator table as support.
-- 200: the A10 memory probe ran without warmup in fixed order.
+- The A10 memory probe ran without warmup in fixed order.
   Its step-time column is order-confounded and unused; only its
   peak-memory column supports H6.
-- 150: TTA is uninformative for the from-scratch arms: the 0.96
+- TTA is uninformative for the from-scratch arms: the 0.96
   threshold sits just above their 15-epoch ceiling, so
   time-to-accuracy compares only through the fine-tuned arm.
-- 150: profiler trace files are not committed (gitignored), so
+- Profiler trace files are not committed (gitignored), so
   the profiler evidence in the repo is the JSON summary, not the
   raw traces.
-- 150: the A7 loader benchmark runs its configurations in fixed
+- The A7 loader benchmark runs its configurations in fixed
   sequence inside one process; order and thermal drift across
   its 136 s are not controlled.
-- 100: one figure in RESULTS.md (the 35.8 s cold-cache first
+- One figure in RESULTS.md (the 35.8 s cold-cache first
   compile) rests on the BlackBox setup log, not a committed
   artefact. It is labelled as such where it appears.
 
-## What the grade is not
+## How to read the misses
 
-It is not a grade of the hypotheses. Six of seven failed against
-their frozen rules, and that is the study working as designed:
-the pre-registration, the paired statistics, and the failure
-records are what the grade rewards. A version of this repo that
-reported only the supported hypothesis would grade lower.
+Six of seven hypotheses failed against their frozen rules, and
+that is the study working as designed: the pre-registration, the
+paired statistics, and the failure records are the point. A
+version of this repo that reported only the supported hypothesis
+would be weaker evidence, not stronger.
 
 ## Open items carried to ROADMAP.md
 

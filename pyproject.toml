@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pytorch-depth-lab"
-version = "1.0.0"
+version = "0.1.0"
 description = "Pre-registered measurement study of a hand-written PyTorch training loop vs a Lightning baseline on EuroSAT"
 requires-python = ">=3.11"
 license = { text = "Apache-2.0" }

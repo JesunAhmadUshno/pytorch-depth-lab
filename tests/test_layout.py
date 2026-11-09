@@ -8,6 +8,8 @@ LOCKED_SHA256 = "be51b55fe275d764d9a8b1440f1d60a9e87884e8a3f4394a03523c9ed9d7a7d
 # SHA-256 of PREREG.md with Amendment A1 (8f2ac1b, before any results). A new amendment updates this pin.
 AMENDED_SHA256 = "e9b5251c31dcc2369c0b3b7e10fbf26c35d0d131a59ef5e22ba64d94259c32ed"
 AMENDMENTS = b"## Amendments\n\n"
+# SHA-256 of SPEC.md as of 8f2ac1b: frozen with PREREG.md at 565dfc0, one declared correction (Amendment A1).
+SPEC_SHA256 = "a3c2e9e490822fd055bc74385c0e42330dfc78482fb3927fc7f58ca96f3ef713"
 
 
 def _prereg():
@@ -25,6 +27,12 @@ def test_frozen_text_is_unchanged_since_the_lock():
 def test_amendments_are_pinned():
     assert hashlib.sha256(_prereg()).hexdigest() == AMENDED_SHA256, \
         "PREREG.md amendments changed; record why in DECISIONS.md and update AMENDED_SHA256"
+
+
+def test_spec_is_pinned():
+    with open(os.path.join(ROOT, "SPEC.md"), "rb") as f:
+        assert hashlib.sha256(f.read()).hexdigest() == SPEC_SHA256, \
+            "SPEC.md changed after its A1 correction; declare a PREREG amendment and update SPEC_SHA256"
 
 
 def test_required_files_exist():

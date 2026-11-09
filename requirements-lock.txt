@@ -23,7 +23,7 @@ Pygments==2.21.0
 pytest==9.2.0
 pytorch-lightning==2.6.6
 PyYAML==6.0.3
-setuptools==78.1.0
+setuptools==84.2.1
 sympy==1.14.0
 torch==2.15.0+cpu
 torchmetrics==1.9.0

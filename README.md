@@ -91,7 +91,7 @@ the role each plays in the portfolio standard.
 | Path | Role | What it holds |
 | --- | --- | --- |
 | PREREG.md | proposal | Frozen protocol, hypotheses and verdict rules (tag proposal-v1); amendments append-only; a test fails if the frozen text changes |
-| SPEC.md | proposal | Research question, design and positioning, frozen with PREREG.md |
+| SPEC.md | proposal | Research question, design and positioning; frozen with PREREG.md at 565dfc0; one declared correction (A1) in 8f2ac1b, pinned by a test |
 | RESULTS.md | report | Provenance, main table, every hypothesis scored, misses, what the study found |
 | AUDIT.md | report | Self-audit: what was verified, limitations and threats to validity |
 | METHODS.md | report | How the frozen protocol is implemented |

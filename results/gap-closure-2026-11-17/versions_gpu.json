@@ -1,0 +1,24 @@
+{
+  "env": {
+    "cpu_count": 20,
+    "cuda_version": "12.8",
+    "device": "cuda",
+    "gpu_name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.7",
+    "timestamp_utc": "2026-11-18T02:39:22Z",
+    "torch": "2.11.0+cu128",
+    "torchvision": "0.26.0+cu128"
+  },
+  "gpu_snapshot": {
+    "driver": "577.05",
+    "mem_clock_mhz": "810",
+    "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "power_w": "7.32",
+    "sm_clock_mhz": "22",
+    "temp_c": "58"
+  },
+  "lightning": "2.6.6",
+  "machine": "gpu",
+  "torchvision": "0.26.0+cu128"
+}

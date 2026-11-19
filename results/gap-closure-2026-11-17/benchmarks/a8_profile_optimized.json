@@ -1,0 +1,114 @@
+{
+  "config": {
+    "batch": 128,
+    "channels_last": false,
+    "pin": true,
+    "steps_profiled": 30,
+    "workers": 4
+  },
+  "cuda_activity_captured": false,
+  "env": {
+    "cpu_count": 20,
+    "cuda_version": "12.8",
+    "device": "cuda",
+    "gpu_name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.7",
+    "timestamp_utc": "2026-11-18T02:38:05Z",
+    "torch": "2.11.0+cu128",
+    "torchvision": "0.26.0+cu128"
+  },
+  "metric": "self_cpu_time_total",
+  "top_ops": [
+    {
+      "count": 600,
+      "op": "aten::convolution_backward",
+      "self_time_us": 61550.199999998134,
+      "share": 0.2121103411295189
+    },
+    {
+      "count": 600,
+      "op": "aten::cudnn_convolution",
+      "self_time_us": 30254.100000000904,
+      "share": 0.10425973386872771
+    },
+    {
+      "count": 600,
+      "op": "aten::cudnn_batch_norm",
+      "self_time_us": 21002.099999998227,
+      "share": 0.07237608643734753
+    },
+    {
+      "count": 30,
+      "op": "Optimizer.step#AdamW.step",
+      "self_time_us": 21000.799999996732,
+      "share": 0.07237160646094151
+    },
+    {
+      "count": 2940,
+      "op": "aten::add_",
+      "self_time_us": 17030.700000000692,
+      "share": 0.05869010314628959
+    },
+    {
+      "count": 600,
+      "op": "aten::cudnn_batch_norm_backward",
+      "self_time_us": 15725.799999998835,
+      "share": 0.054193240680524876
+    },
+    {
+      "count": 6030,
+      "op": "aten::empty",
+      "self_time_us": 9475.800000001445,
+      "share": 0.03265489259946292
+    },
+    {
+      "count": 510,
+      "op": "aten::threshold_backward",
+      "self_time_us": 7859.699999998735,
+      "share": 0.027085592706042577
+    },
+    {
+      "count": 30,
+      "op": "Optimizer.zero_grad#AdamW.zero_grad",
+      "self_time_us": 5983.199999999832,
+      "share": 0.020618919078185614
+    },
+    {
+      "count": 600,
+      "op": "autograd::engine::evaluate_function: CudnnBatchNormBackward0",
+      "self_time_us": 5871.299999998962,
+      "share": 0.020233296494139123
+    },
+    {
+      "count": 510,
+      "op": "aten::clamp_min_",
+      "self_time_us": 5707.5000000012515,
+      "share": 0.019668819467638304
+    },
+    {
+      "count": 3720,
+      "op": "aten::item",
+      "self_time_us": 5216.2000000071275,
+      "share": 0.01797573300170173
+    },
+    {
+      "count": 600,
+      "op": "autograd::engine::evaluate_function: ConvolutionBackward0",
+      "self_time_us": 4399.000000000393,
+      "share": 0.015159550913382332
+    },
+    {
+      "count": 60,
+      "op": "aten::copy_",
+      "self_time_us": 3900.900000000387,
+      "share": 0.013443030724713282
+    },
+    {
+      "count": 30,
+      "op": "aten::addmm",
+      "self_time_us": 3692.5999999996893,
+      "share": 0.012725200659864945
+    }
+  ]
+}

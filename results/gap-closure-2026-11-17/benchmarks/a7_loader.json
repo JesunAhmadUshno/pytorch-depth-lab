@@ -1,0 +1,74 @@
+{
+  "env": {
+    "cpu_count": 20,
+    "cuda_version": "12.8",
+    "device": "cuda",
+    "gpu_name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.7",
+    "timestamp_utc": "2026-11-18T02:34:38Z",
+    "torch": "2.11.0+cu128",
+    "torchvision": "0.26.0+cu128"
+  },
+  "loader_throughput": [
+    {
+      "config": "L0",
+      "images": 64800,
+      "loader_img_s": 1869.5078230978422,
+      "persistent": false,
+      "pin": false,
+      "time_s": 34.66152920003515,
+      "workers": 0
+    },
+    {
+      "config": "L1",
+      "images": 64800,
+      "loader_img_s": 2027.9347892033895,
+      "persistent": false,
+      "pin": true,
+      "time_s": 31.953690199996345,
+      "workers": 0
+    },
+    {
+      "config": "L2",
+      "images": 64800,
+      "loader_img_s": 1635.880291573553,
+      "persistent": false,
+      "pin": true,
+      "time_s": 39.611700399953406,
+      "workers": 2
+    },
+    {
+      "config": "L3",
+      "images": 64800,
+      "loader_img_s": 2793.0750961557624,
+      "persistent": true,
+      "pin": true,
+      "time_s": 23.200235500000417,
+      "workers": 4
+    }
+  ],
+  "step_decomposition": {
+    "L0": {
+      "compute_s": 3.8696636999375187,
+      "data_wait_s": 8.277065800328273,
+      "data_wait_share": 0.6814234070287938,
+      "mean_step_ms": 122.69423737642214,
+      "steps": 100
+    },
+    "L0CL": {
+      "compute_s": 5.545835300057661,
+      "data_wait_s": 4.6357734996126965,
+      "data_wait_share": 0.45530854610744675,
+      "mean_step_ms": 102.84453333000361,
+      "steps": 100
+    },
+    "L3": {
+      "compute_s": 2.9761600999627262,
+      "data_wait_s": 0.027639800042379647,
+      "data_wait_share": 0.00920161161278841,
+      "mean_step_ms": 30.341413131364707,
+      "steps": 100
+    }
+  }
+}

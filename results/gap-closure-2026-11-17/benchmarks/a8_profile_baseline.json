@@ -1,0 +1,114 @@
+{
+  "config": {
+    "batch": 128,
+    "channels_last": false,
+    "pin": false,
+    "steps_profiled": 30,
+    "workers": 0
+  },
+  "cuda_activity_captured": false,
+  "env": {
+    "cpu_count": 20,
+    "cuda_version": "12.8",
+    "device": "cuda",
+    "gpu_name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.7",
+    "timestamp_utc": "2026-11-18T02:37:40Z",
+    "torch": "2.11.0+cu128",
+    "torchvision": "0.26.0+cu128"
+  },
+  "metric": "self_cpu_time_total",
+  "top_ops": [
+    {
+      "count": 600,
+      "op": "aten::convolution_backward",
+      "self_time_us": 53971.60000000134,
+      "share": 0.19863488112071426
+    },
+    {
+      "count": 60,
+      "op": "aten::copy_",
+      "self_time_us": 26575.89999999996,
+      "share": 0.09780886127474174
+    },
+    {
+      "count": 600,
+      "op": "aten::cudnn_convolution",
+      "self_time_us": 25148.19999999986,
+      "share": 0.09255441227237649
+    },
+    {
+      "count": 30,
+      "op": "Optimizer.step#AdamW.step",
+      "self_time_us": 19195.600000001257,
+      "share": 0.0706467053791427
+    },
+    {
+      "count": 600,
+      "op": "aten::cudnn_batch_norm",
+      "self_time_us": 16653.19999999938,
+      "share": 0.061289759841829286
+    },
+    {
+      "count": 2940,
+      "op": "aten::add_",
+      "self_time_us": 14873.700000002416,
+      "share": 0.054740560430403665
+    },
+    {
+      "count": 600,
+      "op": "aten::cudnn_batch_norm_backward",
+      "self_time_us": 14062.300000000869,
+      "share": 0.051754316877467475
+    },
+    {
+      "count": 6030,
+      "op": "aten::empty",
+      "self_time_us": 8362.299999999912,
+      "share": 0.03077626874866949
+    },
+    {
+      "count": 510,
+      "op": "aten::threshold_backward",
+      "self_time_us": 6918.899999999254,
+      "share": 0.025464038104964976
+    },
+    {
+      "count": 30,
+      "op": "Optimizer.zero_grad#AdamW.zero_grad",
+      "self_time_us": 4802.600000000046,
+      "share": 0.0176752936742718
+    },
+    {
+      "count": 510,
+      "op": "aten::clamp_min_",
+      "self_time_us": 4700.600000000603,
+      "share": 0.017299897023548054
+    },
+    {
+      "count": 600,
+      "op": "autograd::engine::evaluate_function: CudnnBatchNormBackward0",
+      "self_time_us": 4641.499999999654,
+      "share": 0.01708238778768285
+    },
+    {
+      "count": 3720,
+      "op": "aten::item",
+      "self_time_us": 4020.800000000687,
+      "share": 0.014797988757240558
+    },
+    {
+      "count": 600,
+      "op": "autograd::engine::evaluate_function: ConvolutionBackward0",
+      "self_time_us": 3630.6000000007316,
+      "share": 0.013361912550248514
+    },
+    {
+      "count": 510,
+      "op": "aten::relu_",
+      "self_time_us": 3382.599999999693,
+      "share": 0.01244918343867609
+    }
+  ]
+}

@@ -71,3 +71,25 @@ anything decided after the freeze, with reasons.
   (PREREG.md, SPEC.md, RESULTS.md, AUDIT.md, METHODS.md,
   DECISIONS.md, ROADMAP.md) are kept and mapped in the README
   layout table instead of renamed.
+- D12 (2026-11-17): Gap-closure re-execution of the GPU suite
+  (run of record named before the run). The gap register
+  (2026-11-17) records that the training runs and test suite
+  were not re-executed for the paper. This entry names the
+  re-execution before it runs: on BlackBox (the machine of
+  record), in a run-copy of the GitHub clone at
+  C:\Users\Jesun\gap-closure-2026-11-17\pytorch-depth-lab,
+  executed with the environment of record (the b4-pytorch-depth
+  .venv: Python 3.14.7, torch 2.11.0+cu128, torchvision
+  0.26.0+cu128, lightning 2.6.6, triton-windows 3.9.0; driver
+  577.05). The dataset is copied from the b4-pytorch-depth data
+  directory and the zip SHA-256 is verified against the D1
+  record before the run. The repo test suite runs first in the
+  run-copy, then python -m src.run_suite --machine gpu, then
+  python -m src.analyze in the run-copy only. GPU clocks are
+  NOT locked for this re-execution, matching the original
+  protocol (boundary snapshots only); the laptop is on AC
+  power. Fresh outputs are harvested into this repo as NEW
+  files under results/gap-closure-2026-11-17/ plus a comparison
+  note; no committed result file is edited and no verdict in
+  RESULTS.md is re-issued: the re-execution is a reproduction
+  check whose aggregates are reported beside the committed ones.

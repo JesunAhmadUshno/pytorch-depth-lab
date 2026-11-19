@@ -1,0 +1,83 @@
+{
+  "cells": [
+    {
+      "batch": 32,
+      "checkpointing": false,
+      "peak_mem_mib": 250.5205078125,
+      "step_ms": 39.915891665926516,
+      "steps": 60
+    },
+    {
+      "batch": 64,
+      "checkpointing": false,
+      "peak_mem_mib": 319.1455078125,
+      "step_ms": 43.06639499942927,
+      "steps": 60
+    },
+    {
+      "batch": 128,
+      "checkpointing": false,
+      "peak_mem_mib": 441.2080078125,
+      "step_ms": 76.99328666688719,
+      "steps": 60
+    },
+    {
+      "batch": 256,
+      "checkpointing": false,
+      "peak_mem_mib": 678.583984375,
+      "step_ms": 139.26422500032155,
+      "steps": 60
+    },
+    {
+      "batch": 32,
+      "checkpointing": true,
+      "peak_mem_mib": 246.5986328125,
+      "step_ms": 26.614443333043408,
+      "steps": 60
+    },
+    {
+      "batch": 64,
+      "checkpointing": true,
+      "peak_mem_mib": 324.08154296875,
+      "step_ms": 37.6238116674358,
+      "steps": 60
+    },
+    {
+      "batch": 128,
+      "checkpointing": true,
+      "peak_mem_mib": 375.78662109375,
+      "step_ms": 65.32002666693491,
+      "steps": 60
+    },
+    {
+      "batch": 256,
+      "checkpointing": true,
+      "peak_mem_mib": 556.53759765625,
+      "step_ms": 121.11072666593827,
+      "steps": 60
+    }
+  ],
+  "env": {
+    "cpu_count": 20,
+    "cuda_version": "12.8",
+    "device": "cuda",
+    "gpu_name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.7",
+    "timestamp_utc": "2026-11-18T02:38:11Z",
+    "torch": "2.11.0+cu128",
+    "torchvision": "0.26.0+cu128"
+  },
+  "feasible_512": {
+    "ckpt_False": {
+      "batch": 512,
+      "error": null,
+      "ok": true
+    },
+    "ckpt_True": {
+      "batch": 512,
+      "error": null,
+      "ok": true
+    }
+  }
+}
